@@ -28,7 +28,7 @@ export default function HomePage() {
           <div className="navigationLinks">
             <a href="#creations">Creations</a>
             <a href="#about">About</a>
-            <a href="#community">Community</a>
+            <a href="/matchmaking/">Matchmaking</a>
           </div>
 
           <a className="navigationButton" href="#creations">
