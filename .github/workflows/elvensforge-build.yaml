@@ -14,20 +14,44 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: ./out
+  DEPLOYMENT_FOLDER: ./elvensforge/out
 
 jobs:
-# Please do not rename this job
+  # Please do not rename this job
   build-project:
     name: build elvensforge
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: 'recursive'
+          submodules: "recursive"
 
-# Please do not touch the following action
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: elvensforge/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./elvensforge
+        run: npm ci
+
+      - name: Build static Next.js site
+        working-directory: ./elvensforge
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ inputs.site-url }}
+        run: npm run build
+
+      - name: Verify static export
+        run: |
+          test -f ./elvensforge/out/index.html
+          echo "Static export generated successfully"
+          ls -la ./elvensforge/out
+
+      # Please do not touch the following action
       - name: Store deployment content
         uses: ionos-deploy-now/artifact-action@v1
         with:
