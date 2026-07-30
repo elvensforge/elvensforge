@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: ./elvensforge/out
+  DEPLOYMENT_FOLDER: ./out
 
 jobs:
   # Please do not rename this job
@@ -33,23 +33,21 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: elvensforge/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: ./elvensforge
         run: npm ci
 
       - name: Build static Next.js site
-        working-directory: ./elvensforge
         env:
           NEXT_PUBLIC_SITE_URL: ${{ inputs.site-url }}
         run: npm run build
 
       - name: Verify static export
         run: |
-          test -f ./elvensforge/out/index.html
+          test -f ./out/index.html
           echo "Static export generated successfully"
-          ls -la ./elvensforge/out
+          ls -la ./out
 
       # Please do not touch the following action
       - name: Store deployment content
@@ -61,5 +59,5 @@ jobs:
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
-          config-file: .deploy-now/elvensforge/config.yaml
+          config-file: .deploy-now/config.yaml
           action: upload
