@@ -1,29 +1,42 @@
-# ElvensForge
+# ElvensForge — UAT homepage
 
-Next.js storefront with static export for IONOS. Shopify owns products, variants, inventory, pricing, carts, discounts and checkout. No payment details are collected by this site.
+This checkout implements the homepage specification on **UAT only**, targeting `https://home-5021050840.app-ionos.space/`. Production (`main`) and the earlier design branch are not change targets.
 
 ## Development
 
-Run `npm ci`, then `npm run dev`. Run `npm run lint`, `npm test` (Node.js 24) and `npm run build` to validate. Static output is generated in `out/`.
+Use Node.js 24. Run `npm ci`, copy `.env.example` to `.env.local`, and run `npm run dev`. Validate with `npm run lint` and `npm run build`. The existing Next.js static export is generated in `out/`; routing and dependencies are preserved.
 
-## Activate the shop
+## Homepage and reusable components
 
-The Shopify store is still being created. Until configured, `/shop/` shows an opening-soon state. There are no placeholder products or prices, and checkout is unavailable. Matchmaking has been removed.
+The home page follows the requested order: header, hero, LED-base introduction, three process steps, featured collection preview, transformation studies/video space, broader brand story, original-project gallery, final shop CTA and footer.
 
-1. Create the Shopify store, configure payments, shipping, taxes, markets and shop policies in Shopify, and install the Headless sales channel.
-2. Add real LED miniature bases and accessories with photos, descriptions/specifications, prices, variants and inventory. Publish them to the storefront's sales channel. Keep technical specifications (dimensions, materials, LED power requirements, compatibility, included parts) in the product description. Product options are shown separately on the details panel.
-3. Copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` to the exact `your-shop.myshopify.com` hostname, without `https://` or paths. The integration uses tokenless Storefront API access for products and carts. If your channel requires a token, set `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN` to its **public** Storefront token. Never use Admin API keys, private tokens or client secrets here: `NEXT_PUBLIC_` values are included in browser bundles.
-4. Set the same public build variables in the deployment environment, rebuild and deploy. For the existing GitHub Actions workflow, define repository Actions variables with these names; the build workflow forwards them to Next.js. Empty variables are safe and keep the shop closed. Configure channel access/origin settings for the production domain as required by Shopify.
-5. Publish a test product and verify the real integration: catalog, photos, all variants, sold-out states, cart add/update/remove, reload persistence, inventory changes, shipping, taxes, discounts, and Shopify test-mode checkout/order confirmation. Disable payment test mode before launch. No live purchase has been tested while the store does not exist.
+- `app/page.tsx`: product-first homepage and requested copy.
+- `components/mobile-navigation.tsx`: one set of six links, responsive toggle, Escape dismissal and keyboard focus.
+- `components/project-image.tsx`: original photography or explicit missing-photo frames, mobile art direction, priority hero and lazy noncritical imagery.
+- `components/showcase.tsx`: reusable LED-base cards, optional verified variants/specifications/prices and native detail controls.
+- `components/site-shell.tsx`: wordmark, navigation, final CTA and verified contact/footer links.
+- `app/shop/page.tsx`: catalogue preview only. No commerce integration, cart, checkout, fake inventory or transaction controls.
 
-Catalog data is fetched live in the browser, so Shopify catalog and stock changes do not require a rebuild. Credentials/domain changes do require a build. The API version is pinned to `2026-10` in `lib/shopify.ts`; review it before Shopify retires that version.
+The previous UAT commerce scaffolding has been removed to keep this implementation within scope. Unavailable categories are not advertised as active product offerings. Broader work appears only in the brand story.
 
-## Storefront behavior
+## Required original photography
 
-- `/shop/` lists published products with cursor pagination. Product cards open an accessible native dialog; `?product=product-handle` links to a product without requiring dynamic routes or a Next.js server.
-- Product descriptions render as plain text, never unsanitized HTML. Variant configurations, prices, availability and up to 20 gallery images come from Shopify. All variants are fetched with pagination.
-- Carts are created and mutated in Shopify. Only the cart ID is saved locally, scoped to the shop hostname. Blocked browser storage still permits shopping during the current visit.
-- Expired carts are cleared; failed cart requests display a retry control. Mutations are serialized and Shopify warnings are displayed. Carts and checkout URLs are refreshed before checkout. Shopify performs final stock/pricing validation.
-- Checkout redirects to the HTTPS `checkoutUrl` returned by Shopify. Shipping and taxes are finalized there. Browser requests require no private backend credentials.
+No original miniature photographs were included in the supplied attachment or current repository. See `public/images/home/README.md` for the requested asset names and derivative dimensions. Originals must be supplied before photography acceptance can be completed.
 
-Official references: [Storefront API authentication](https://shopify.dev/docs/api/storefront/latest), [Shopify carts and checkout](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/manage).
+`lib/home-content.ts` checks for each derivative at build time. Missing photographs remain labelled placeholders rather than broken URLs or generated miniature images. Add real files and rebuild. The included `scripts/prepare-home-image.mjs` can create optimized WebP derivatives without modifying the original masters. Verify subjects, alt text and orientation before publishing. Transformation studies are not presented as a controlled before/after comparison.
+
+No separate logo asset or official red token was found in UAT. The existing wordmark and favicon are preserved. The red action palette is centralized in `app/globals.css` (`--action`, `--accent`) and needs brand-owner confirmation; it is not represented as a verified original colour measurement.
+
+## Pending links and catalogue
+
+`lib/content.ts` holds the catalogue preview, verified contact email, optional social profiles and optional legal destinations. No prices, stock, variants, customer reviews, business identifiers or social handles are invented. Shipping, returns, privacy and terms are visibly inactive until actual pages/URLs exist. Official social links remain hidden until configured.
+
+Product demonstrations have a reserved noninteractive space until an original video is supplied. Real product listings and specifications are pending.
+
+## UAT indexing and deployment
+
+The existing IONOS orchestration selects the branch from the workflow's Git ref. Only UAT is to be pushed for this task. The build workflow supplies the known UAT URL and `NEXT_PUBLIC_DEPLOYMENT_ENV=uat` for that branch. Production refs use the original supplied site URL and do not receive the UAT flag.
+
+UAT gets `noindex, nofollow` metadata and `robots.txt` with `Disallow: /`. A branch-conditional workflow step adds an `X-Robots-Tag` response-header directive to the exported `.htaccess` for Apache hosts with `mod_headers`. No production workflow is dispatched by this task. The restrictions are intended for indexing control, not access control.
+
+Each page has a single H1, distinct metadata and valid internal destinations. Open Graph uses an original hero photograph only when that real image exists; no unrelated or generated image is substituted.

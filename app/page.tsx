@@ -1,136 +1,264 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-const features = [
-  {
-    title: "Terrain",
-    description:
-      "Immersive battlefield terrain designed for memorable tabletop encounters.",
-  },
-  {
-    title: "Painting Kits",
-    description:
-      "Creative kits, lighting components and accessories for miniature projects.",
-  },
-  {
-    title: "Collectibles",
-    description:
-      "Limited creations that combine craftsmanship, technology and fantasy.",
-  },
-];
+import ProjectImage from "@/components/project-image";
+import { ProductShowcase } from "@/components/showcase";
+import {
+  ContactSection,
+  SiteFooter,
+  SiteHeader,
+} from "@/components/site-shell";
+import { pillars, siteDescription } from "@/lib/content";
+import { homeMedia, steps, gallery } from "@/lib/home-content";
+import { pageMetadata } from "@/lib/metadata";
 
+export const metadata: Metadata = pageMetadata(
+  "ElvensForge | LED Bases for Tabletop Miniatures",
+  siteDescription,
+  "/",
+);
 export default function HomePage() {
   return (
-    <main>
-      <nav className="navigation siteNavigation" aria-label="Main navigation">
-        <Link className="brand" href="/">
-          ELVENSFORGE
-        </Link>
-
-        <div className="navigationLinks">
-          <a href="#creations">Creations</a>
-          <a href="#about">About</a>
-          <Link href="/shop/">Shop</Link>
-        </div>
-
-        <Link className="navigationButton" href="/shop/">
-          Shop
-        </Link>
-      </nav>
-      <section className="hero">
-        <div className="heroContent">
-          <p className="eyebrow">ART · CRAFT · TECHNOLOGY</p>
-
-          <h1>
-            Forge worlds.
-            <br />
-            <span>Create legends.</span>
-          </h1>
-
-          <p className="heroDescription">
-            ElvensForge creates immersive terrain, painting experiences and
-            collectible artifacts for tabletop worlds.
-          </p>
-
-          <div className="heroActions">
-            <a className="primaryButton" href="#creations">
-              Explore the forge
-            </a>
-
-            <a className="secondaryButton" href="#about">
-              Discover our story
-            </a>
+    <>
+      <SiteHeader />
+      <main id="main-content" tabIndex={-1}>
+        <section className="hero" id="home" aria-labelledby="hero-title">
+          <div className="heroContent">
+            <p className="eyebrow">ART · CRAFT · TECHNOLOGY</p>
+            <h1 id="hero-title">
+              Bring Your
+              <br />
+              Miniatures
+              <br />
+              <span>to Life.</span>
+            </h1>
+            <p className="heroDescription">
+              Transform your tabletop miniatures with custom 3D-printed LED
+              bases. Designed to create extraordinary visual effects without
+              complicated installations.
+            </p>
+            <div className="heroActions">
+              <Link className="primaryButton" href="/shop/">
+                Shop LED Bases <span aria-hidden="true">↗</span>
+              </Link>
+              <a className="secondaryButton" href="#transformation">
+                See Them in Action <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <p className="heroFootnote">Forge Worlds. Create Legends.</p>
           </div>
-        </div>
-
-        <div className="heroDecoration" aria-hidden="true">
-          <div className="forgeOrbit" />
-          <div className="forgeOrbit forgeOrbitSecond" />
-          <div className="forgeArtifact">
-            <span>EF</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="creationsSection" id="creations">
-        <div className="sectionHeading">
-          <p className="eyebrow">THE FORGE</p>
-          <h2>Crafted for extraordinary worlds</h2>
-          <p>
-            Physical creations made for hobbyists, collectors and players who
-            want their tabletop worlds to feel unique.
-          </p>
-        </div>
-
-        <div className="featureGrid">
-          {features.map((feature, index) => (
-            <article className="featureCard" key={feature.title}>
-              <span className="featureNumber">
-                {String(index + 1).padStart(2, "0")}
+          <figure className="heroMedia">
+            <div className="heroPhotoFrame">
+              <ProjectImage
+                image={homeMedia.hero}
+                mobileImage={homeMedia.mobileHero}
+                label="Void Dragon / Nightbringer original photograph"
+                hero
+              />
+            </div>
+            <figcaption>
+              <span>ELVENSFORGE / LED-READY BASES</span>
+              <span>
+                {homeMedia.hero || homeMedia.mobileHero
+                  ? "Original ElvensForge photography"
+                  : "Original photo pending"}
               </span>
-
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-
-              <span className="comingSoon">Coming soon</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="aboutSection" id="about">
-        <div>
-          <p className="eyebrow">OUR PURPOSE</p>
-          <h2>More than scenery</h2>
-        </div>
-
-        <p>
-          We combine digital fabrication, artistic design and storytelling to
-          create objects that become part of your games, collections and
-          personal worlds.
-        </p>
-      </section>
-
-      <section className="communitySection" id="community">
-        <div className="communityPanel">
-          <p className="eyebrow">THE JOURNEY BEGINS</p>
-          <h2>Enter the world of ElvensForge</h2>
-          <p>
-            New creations, experiments and behind-the-scenes content are coming
-            soon.
+            </figcaption>
+          </figure>
+        </section>
+        <section
+          className="productIntroduction"
+          id="led-bases"
+          aria-labelledby="introduction-title"
+        >
+          <div className="introductionMedia">
+            <ProjectImage
+              image={homeMedia.base}
+              label="Miniature base with lighting system visible"
+            />
+          </div>
+          <div className="introductionContent">
+            <p className="eyebrow">THE ART OF ILLUMINATION</p>
+            <h2 id="introduction-title">
+              Small Bases.
+              <br />
+              Extraordinary Impact.
+            </h2>
+            <p>
+              A great miniature deserves more than an ordinary base. Our
+              LED-ready designs bring light, atmosphere and personality to your
+              tabletop creations.
+            </p>
+            <Link className="textLink" href="/shop/">
+              Explore LED-ready bases <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </section>
+        <section
+          className="processSection"
+          id="how-it-works"
+          aria-labelledby="process-title"
+        >
+          <div className="sectionHeading">
+            <div>
+              <p className="eyebrow">FROM DESIGN TO ILLUMINATION</p>
+              <h2 id="process-title">
+                Designed to Make
+                <br />
+                Lighting Simple.
+              </h2>
+            </div>
+            <p>
+              A considered base design creates space for light. Follow the
+              process from choosing a design to revealing the finished effect.
+            </p>
+          </div>
+          <div className="processGrid">
+            {steps.map((step, index) => (
+              <article className="processCard" key={step.title}>
+                <ProjectImage image={step.image} label={step.label} />
+                <div className="processCaption">
+                  <span className="featureNumber">0{index + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="sectionNote processNote">
+            Installation requirements and miniature compatibility depend on the
+            individual design. Confirm the specifications before planning your
+            build.
           </p>
-
-          <a className="secondaryButton" href="mailto:contact@elvensforge.com">
-            Contact the forge
-          </a>
-        </div>
-      </section>
-
-      <footer>
-        <Link className="brand" href="/">
-          ELVENSFORGE
-        </Link>
-
-        <p>© {new Date().getFullYear()} ElvensForge</p>
-      </footer>
-    </main>
+        </section>
+        <ProductShowcase />
+        <section
+          className="transformationSection"
+          id="transformation"
+          aria-labelledby="transformation-title"
+        >
+          <div className="sectionHeading">
+            <div>
+              <p className="eyebrow">THE TRANSFORMATION</p>
+              <h2 id="transformation-title">
+                From Ordinary
+                <br />
+                to Extraordinary.
+              </h2>
+            </div>
+            <p>
+              See how carefully placed lighting can transform the atmosphere,
+              details and presence of your miniatures.
+            </p>
+          </div>
+          <div className="transformationGrid">
+            <figure>
+              <ProjectImage
+                image={homeMedia.transformationDetail}
+                label="Original miniature detail photograph"
+              />
+              <figcaption>Miniature detail study</figcaption>
+            </figure>
+            <figure>
+              <ProjectImage
+                image={homeMedia.transformationLight}
+                label="Original illuminated miniature photograph"
+              />
+              <figcaption>Illumination study</figcaption>
+            </figure>
+          </div>
+          <p className="sectionNote">
+            Photographic sequence pending. Images will only be labelled before
+            and after when the same subject and setup are verified.
+          </p>
+          <div className="videoPlaceholder">
+            <span className="videoMark" aria-hidden="true">
+              ▷
+            </span>
+            <div>
+              <h3>A closer look at the process.</h3>
+              <p>Space reserved for an original product demonstration video.</p>
+            </div>
+            <span className="inlineBadge">VIDEO PENDING</span>
+          </div>
+        </section>
+        <section
+          className="aboutSection"
+          id="about"
+          aria-labelledby="about-title"
+        >
+          <div className="aboutIntroduction">
+            <div>
+              <p className="eyebrow">THE CREATIVE FORGE</p>
+              <h2 id="about-title">
+                More Than a Workshop.
+                <br />A Creative Forge.
+              </h2>
+            </div>
+            <div>
+              <p>
+                ElvensForge brings together art, craftsmanship and technology to
+                explore new possibilities for tabletop gaming, miniature
+                painting and immersive creations.
+              </p>
+              <p className="brandSignature">Forge Worlds. Create Legends.</p>
+            </div>
+          </div>
+          <div className="pillarsGrid">
+            {pillars.map((pillar, index) => (
+              <article key={pillar.name}>
+                <span className="featureNumber" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <h3>{pillar.name}</h3>
+                <p>{pillar.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section
+          className="creationsSection"
+          id="gallery"
+          aria-labelledby="gallery-title"
+        >
+          <div className="sectionHeading">
+            <div>
+              <p className="eyebrow">THE RESULTS</p>
+              <h2 id="gallery-title">Forged in Light.</h2>
+            </div>
+            <p>Real projects. Real miniatures. Extraordinary results.</p>
+          </div>
+          {gallery.some((item) => !item.image) && (
+            <p className="sectionNote">
+              Original photography is pending. These frames identify the
+              requested photographs and do not represent finished product
+              images.
+            </p>
+          )}
+          <div className="galleryGrid">
+            {gallery.map((item) => (
+              <figure className="galleryCard" key={item.title}>
+                <div className="galleryImageWrap">
+                  <ProjectImage image={item.image} label={item.label} />
+                </div>
+                <figcaption>
+                  <h3>{item.title}</h3>
+                  <p>
+                    {item.image
+                      ? "Original ElvensForge project photograph."
+                      : "Original photograph pending."}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="demonstrationNote">
+            Miniatures and painted scenery shown for demonstration purposes
+            only.
+          </p>
+        </section>
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

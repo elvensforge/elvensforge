@@ -40,9 +40,8 @@ jobs:
 
       - name: Build static Next.js site
         env:
-          NEXT_PUBLIC_SITE_URL: ${{ inputs.site-url }}
-          NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: ${{ vars.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN }}
-          NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN: ${{ vars.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN }}
+          NEXT_PUBLIC_SITE_URL: ${{ github.ref_name == 'UAT' && 'https://home-5021050840.app-ionos.space' || inputs.site-url }}
+          NEXT_PUBLIC_DEPLOYMENT_ENV: ${{ github.ref_name == 'UAT' && 'uat' || 'production' }}
         run: npm run build
 
       - name: Verify static export
@@ -50,6 +49,15 @@ jobs:
           test -f ./out/index.html
           echo "Static export generated successfully"
           ls -la ./out
+
+      - name: Prevent UAT search indexing at the HTTP layer
+        if: github.ref_name == 'UAT'
+        run: |
+          cat >> ./out/.htaccess <<'EOF'
+          <IfModule mod_headers.c>
+            Header always set X-Robots-Tag "noindex, nofollow"
+          </IfModule>
+          EOF
 
       # Please do not touch the following action
       - name: Store deployment content

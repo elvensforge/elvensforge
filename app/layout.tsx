@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cal_Sans, Geist } from "next/font/google";
 import "./globals.css";
+import { pageMetadata } from "@/lib/metadata";
+import { siteDescription, isUat } from "@/lib/content";
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
@@ -15,9 +17,20 @@ const display = Cal_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ElvensForge | Forge Worlds. Create Legends.",
-  description:
-    "Immersive terrain, creative painting experiences and collectible artifacts for tabletop worlds.",
+  ...pageMetadata(
+    "ElvensForge | LED Bases for Tabletop Miniatures",
+    siteDescription,
+    "/",
+  ),
+  ...(isUat
+    ? {
+        robots: {
+          index: false,
+          follow: false,
+          googleBot: { index: false, follow: false },
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({
@@ -27,7 +40,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${display.variable}`}>
-      <body>{children}</body>
+      <body>
+        <a className="skipLink" href="#main-content">
+          Skip to main content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }
