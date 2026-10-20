@@ -1,3 +1,4 @@
+import Link from "next/link";
 const features = [
   {
     title: "Terrain",
@@ -19,30 +20,29 @@ const features = [
 export default function HomePage() {
   return (
     <main>
+      <nav className="navigation siteNavigation" aria-label="Main navigation">
+        <Link className="brand" href="/">
+          ELVENSFORGE
+        </Link>
+
+        <div className="navigationLinks">
+          <a href="#creations">Creations</a>
+          <a href="#about">About</a>
+          <Link href="/matchmaking/">Matchmaking</Link>
+        </div>
+
+        <a className="navigationButton" href="#creations">
+          Explore
+        </a>
+      </nav>
       <section className="hero">
-        <nav className="navigation" aria-label="Main navigation">
-          <a className="brand" href="/">
-            ELVENSFORGE
-          </a>
-
-          <div className="navigationLinks">
-            <a href="#creations">Creations</a>
-            <a href="#about">About</a>
-            <a href="/matchmaking/">Matchmaking</a>
-          </div>
-
-          <a className="navigationButton" href="#creations">
-            Explore
-          </a>
-        </nav>
-
         <div className="heroContent">
           <p className="eyebrow">ART · CRAFT · TECHNOLOGY</p>
 
           <h1>
             Forge worlds.
             <br />
-            Create legends.
+            <span>Create legends.</span>
           </h1>
 
           <p className="heroDescription">
@@ -62,7 +62,11 @@ export default function HomePage() {
         </div>
 
         <div className="heroDecoration" aria-hidden="true">
-          EF
+          <div className="forgeOrbit" />
+          <div className="forgeOrbit forgeOrbitSecond" />
+          <div className="forgeArtifact">
+            <span>EF</span>
+          </div>
         </div>
       </section>
 
@@ -86,7 +90,7 @@ export default function HomePage() {
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
 
-              <a href="#">Coming soon →</a>
+              <span className="comingSoon">Coming soon</span>
             </article>
           ))}
         </div>
@@ -106,22 +110,24 @@ export default function HomePage() {
       </section>
 
       <section className="communitySection" id="community">
-        <p className="eyebrow">THE JOURNEY BEGINS</p>
-        <h2>Enter the world of ElvensForge</h2>
-        <p>
-          New creations, experiments and behind-the-scenes content are coming
-          soon.
-        </p>
+        <div className="communityPanel">
+          <p className="eyebrow">THE JOURNEY BEGINS</p>
+          <h2>Enter the world of ElvensForge</h2>
+          <p>
+            New creations, experiments and behind-the-scenes content are coming
+            soon.
+          </p>
 
-        <a className="primaryButton" href="mailto:contact@elvensforge.com">
-          Contact the forge
-        </a>
+          <a className="secondaryButton" href="mailto:contact@elvensforge.com">
+            Contact the forge
+          </a>
+        </div>
       </section>
 
       <footer>
-        <a className="brand" href="/">
+        <Link className="brand" href="/">
           ELVENSFORGE
-        </a>
+        </Link>
 
         <p>© {new Date().getFullYear()} ElvensForge</p>
       </footer>
