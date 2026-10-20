@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
+import { Cal_Sans, Geist } from "next/font/google";
 import "./globals.css";
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+const display = Cal_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  adjustFontFallback: false,
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "ElvensForge | Forge Worlds. Create Legends.",
@@ -13,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${geist.variable} ${display.variable}`}>
       <body>{children}</body>
     </html>
   );
