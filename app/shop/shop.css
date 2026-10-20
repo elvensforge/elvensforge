@@ -1,0 +1,482 @@
+.shopPage {
+  --accent: #00efef;
+  --border: #3c6570;
+}
+.shopPage button {
+  cursor: pointer;
+}
+.shopPage button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+.shopPage .primaryButton {
+  gap: 24px;
+  border-radius: 5px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #031315;
+  box-shadow: 0 0 24px #00efef18;
+}
+.shopPage .primaryButton:hover:not(:disabled) {
+  background: #b2ffff;
+  box-shadow: 0 0 28px #00efef32;
+}
+.shopPage .secondaryButton,
+.shopPage .navigationButton {
+  border-radius: 5px;
+  border-color: #55818a;
+}
+.shopPage .secondaryButton {
+  gap: 16px;
+}
+.shopPage .navigationLinks a[aria-current="page"] {
+  color: var(--accent);
+}
+.shopHero,
+.shopCatalog,
+.shopPromises {
+  padding-inline: max(24px, calc((100% - 1200px) / 2));
+}
+.shopHero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  padding-block: 80px;
+  border-bottom: 1px solid #204047;
+  background: radial-gradient(ellipse at 80% 70%, #00353b55, transparent 55%);
+}
+.shopHero h1 {
+  font-size: clamp(44px, 5.6vw, 80px);
+  line-height: 1.04;
+  margin: 0;
+  letter-spacing: 0.025em;
+}
+.shopHero h1 span {
+  color: var(--accent);
+}
+.shopIntro {
+  max-width: 530px;
+  margin: 24px 0 32px;
+  color: #c8cad0;
+}
+.shopArtifact {
+  position: relative;
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+  perspective: 850px;
+  border: 1px solid #21434c;
+  border-radius: 8px;
+  background:
+    linear-gradient(#00efef09 1px, transparent 1px),
+    linear-gradient(90deg, #00efef09 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.ledBase {
+  width: 230px;
+  height: 230px;
+  border: 3px solid #00efef;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 20deg,
+    #101c24 0deg 28deg,
+    #1c3540 28deg 30deg
+  );
+  transform: rotateX(55deg) rotateZ(-20deg);
+  box-shadow:
+    0 12px 0 #141e28,
+    0 16px 0 #00aaaa,
+    0 20px 30px #00efef55,
+    inset 0 0 25px #00efef44;
+  display: grid;
+  place-items: center;
+}
+.ledBase span {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  color: #aeffff;
+}
+.hudCross {
+  position: absolute;
+  color: var(--accent);
+  font: 24px monospace;
+}
+.hudCrossTop {
+  top: 8px;
+  left: 12px;
+}
+.hudCrossBottom {
+  bottom: 8px;
+  right: 12px;
+}
+.artifactCaption {
+  position: absolute;
+  bottom: 24px;
+  font: 10px monospace;
+  letter-spacing: 0.14em;
+  color: #83c2c8;
+}
+.shopCatalog {
+  padding-block: 80px;
+}
+.shopSectionHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.shopSectionHeader h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.12;
+}
+.shopBadge {
+  border: 1px solid #3c6570;
+  padding: 8px 12px;
+  font: 11px monospace;
+  color: #93d4db;
+  white-space: nowrap;
+}
+.shopProductGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.shopProductCard {
+  min-width: 0;
+  border: 1px solid #3c6570;
+  background: #0d0e12;
+  border-radius: 8px;
+  overflow: hidden;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.shopProductCard:hover {
+  border-color: #00efef;
+  box-shadow: 0 0 24px #00efef10;
+}
+.shopProductVisual {
+  width: 100%;
+  padding: 0;
+  display: block;
+  border: 0;
+  background: #141418;
+  aspect-ratio: 1;
+}
+.shopImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #141418;
+}
+.shopImagePlaceholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  color: #a2a4a9;
+  background: #141418;
+  font-size: 14px;
+}
+.shopProductInfo {
+  padding: 24px;
+}
+.shopStock {
+  color: #8ce4e4;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.shopProductInfo h3 {
+  margin: 16px 0;
+  font-size: 24px;
+  overflow-wrap: anywhere;
+}
+.shopPrice {
+  font-size: 20px;
+  margin: 16px 0 24px;
+}
+.shopProductInfo .secondaryButton {
+  width: 100%;
+}
+.shopEmpty {
+  border: 1px solid #3c6570;
+  background: linear-gradient(120deg, #0d1e23, #0d0e12);
+  border-radius: 8px;
+  padding: 56px 24px;
+  text-align: center;
+}
+.shopEmpty h3 {
+  font-size: clamp(24px, 3vw, 36px);
+  margin: 16px 0;
+}
+.shopEmpty > p:not(.eyebrow) {
+  max-width: 600px;
+  margin: 16px auto 32px;
+  color: #c8cad0;
+}
+.shopSignal {
+  display: block;
+  height: 8px;
+  width: 8px;
+  margin: 0 auto 24px;
+  background: var(--accent);
+  box-shadow: 0 0 16px var(--accent);
+}
+.shopStatus {
+  padding: 32px;
+  text-align: center;
+}
+.shopPromises {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  padding-bottom: 80px;
+}
+.shopPromises > div {
+  border-top: 1px solid #3c6570;
+  padding-top: 24px;
+}
+.shopPromises span {
+  font: 12px monospace;
+  color: #8ce4e4;
+}
+.shopPromises h3 {
+  font-size: 20px;
+  line-height: 1.3;
+}
+.shopPromises p {
+  color: #c8cad0;
+  font-size: 14px;
+}
+.shopDialog {
+  background: #0d0e12;
+  color: white;
+  border: 1px solid #3c6570;
+  border-radius: 8px;
+  padding: 24px;
+  width: calc(100% - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  overscroll-behavior: contain;
+}
+.shopDialog::backdrop {
+  background: #000c;
+  backdrop-filter: blur(5px);
+}
+.productDialog {
+  max-width: 1040px;
+}
+.cartDialog {
+  max-width: 620px;
+}
+.shopDialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #2e3038;
+  padding-bottom: 16px;
+}
+.shopDialogHeader .eyebrow {
+  margin: 0;
+}
+.shopDialogHeader h2 {
+  margin: 0;
+  font-size: 32px;
+}
+.shopClose {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #3c6570;
+  border-radius: 5px;
+  font-size: 28px;
+  background: transparent;
+  color: white;
+}
+.shopDetailGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+}
+.shopDetailGrid h2 {
+  font-size: 32px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.shopDescription {
+  white-space: pre-line;
+  color: #c8cad0;
+}
+.shopThumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 0;
+}
+.shopThumbnails button {
+  width: 64px;
+  flex-shrink: 0;
+  padding: 2px;
+  background: transparent;
+  border: 1px solid #3c6570;
+}
+.shopThumbnails button[aria-pressed="true"] {
+  border: 2px solid var(--accent);
+}
+.shopField {
+  display: grid;
+  gap: 8px;
+  margin-block: 24px;
+  font-size: 14px;
+}
+.shopField input,
+.shopField select {
+  min-width: 0;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #3c6570;
+  border-radius: 5px;
+  background: #141418;
+  color: white;
+}
+.shopField input {
+  max-width: 120px;
+}
+.shopSpecifications > div {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  border-bottom: 1px solid #2e3038;
+  padding: 8px 0;
+}
+.shopSpecifications dd {
+  margin: 0;
+  color: #c8cad0;
+}
+.shopSpecification {
+  color: #c8cad0;
+  font-size: 14px;
+}
+.shopBuy {
+  width: 100%;
+}
+.shopFinePrint {
+  font-size: 12px;
+  color: #aebbc4;
+}
+.shopCartNotice {
+  color: #8ce4e4;
+  font-size: 14px;
+}
+.shopCartLine {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  padding-block: 24px;
+  border-bottom: 1px solid #2e3038;
+}
+.shopCartLine h3 {
+  margin: 0;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+.shopCartLine p {
+  color: #c8cad0;
+  font-size: 14px;
+  margin: 8px 0;
+}
+.shopQuantity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.shopQuantity button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #3c6570;
+  border-radius: 5px;
+  background: #141418;
+  color: white;
+}
+.shopQuantity .shopRemove {
+  padding-inline: 12px;
+  color: #b9c7cf;
+}
+.shopCartSummary > p:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .shopHero {
+    gap: 24px;
+  }
+  .shopHero h1 {
+    font-size: 48px;
+  }
+  .shopProductGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ledBase {
+    width: 180px;
+    height: 180px;
+  }
+  .shopSectionHeader {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 620px) {
+  .shopHero,
+  .shopDetailGrid,
+  .shopPromises,
+  .shopProductGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .shopHero {
+    padding-block: 48px;
+  }
+  .shopHero h1 {
+    font-size: clamp(36px, 9vw, 48px);
+  }
+  .shopArtifact {
+    min-height: 260px;
+  }
+  .shopCatalog {
+    padding-block: 48px;
+  }
+  .shopPromises {
+    padding-bottom: 48px;
+  }
+  .shopDialog {
+    padding: 20px;
+  }
+  .shopCartLine {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+  .shopBadge {
+    white-space: normal;
+  }
+}
+
+body:has(.shopDialog[open]) {
+  overflow: hidden;
+}
