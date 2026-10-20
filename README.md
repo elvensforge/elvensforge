@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ElvensForge
 
-## Getting Started
+Next.js storefront with static export for IONOS. Shopify owns products, variants, inventory, pricing, carts, discounts and checkout. No payment details are collected by this site.
 
-First, run the development server:
+## Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Run `npm ci`, then `npm run dev`. Run `npm run lint`, `npm test` (Node.js 24) and `npm run build` to validate. Static output is generated in `out/`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Activate the shop
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Shopify store is still being created. Until configured, `/shop/` shows an opening-soon state. There are no placeholder products or prices, and checkout is unavailable. Matchmaking has been removed.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create the Shopify store, configure payments, shipping, taxes, markets and shop policies in Shopify, and install the Headless sales channel.
+2. Add real LED miniature bases and accessories with photos, descriptions/specifications, prices, variants and inventory. Publish them to the storefront's sales channel. Keep technical specifications (dimensions, materials, LED power requirements, compatibility, included parts) in the product description. Product options are shown separately on the details panel.
+3. Copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` to the exact `your-shop.myshopify.com` hostname, without `https://` or paths. The integration uses tokenless Storefront API access for products and carts. If your channel requires a token, set `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN` to its **public** Storefront token. Never use Admin API keys, private tokens or client secrets here: `NEXT_PUBLIC_` values are included in browser bundles.
+4. Set the same public build variables in the deployment environment, rebuild and deploy. For the existing GitHub Actions workflow, define repository Actions variables with these names; the build workflow forwards them to Next.js. Empty variables are safe and keep the shop closed. Configure channel access/origin settings for the production domain as required by Shopify.
+5. Publish a test product and verify the real integration: catalog, photos, all variants, sold-out states, cart add/update/remove, reload persistence, inventory changes, shipping, taxes, discounts, and Shopify test-mode checkout/order confirmation. Disable payment test mode before launch. No live purchase has been tested while the store does not exist.
 
-## Learn More
+Catalog data is fetched live in the browser, so Shopify catalog and stock changes do not require a rebuild. Credentials/domain changes do require a build. The API version is pinned to `2026-10` in `lib/shopify.ts`; review it before Shopify retires that version.
 
-To learn more about Next.js, take a look at the following resources:
+## Storefront behavior
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/shop/` lists published products with cursor pagination. Product cards open an accessible native dialog; `?product=product-handle` links to a product without requiring dynamic routes or a Next.js server.
+- Product descriptions render as plain text, never unsanitized HTML. Variant configurations, prices, availability and up to 20 gallery images come from Shopify. All variants are fetched with pagination.
+- Carts are created and mutated in Shopify. Only the cart ID is saved locally, scoped to the shop hostname. Blocked browser storage still permits shopping during the current visit.
+- Expired carts are cleared; failed cart requests display a retry control. Mutations are serialized and Shopify warnings are displayed. Carts and checkout URLs are refreshed before checkout. Shopify performs final stock/pricing validation.
+- Checkout redirects to the HTTPS `checkoutUrl` returned by Shopify. Shipping and taxes are finalized there. Browser requests require no private backend credentials.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Official references: [Storefront API authentication](https://shopify.dev/docs/api/storefront/latest), [Shopify carts and checkout](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/manage).

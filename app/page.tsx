@@ -28,12 +28,12 @@ export default function HomePage() {
         <div className="navigationLinks">
           <a href="#creations">Creations</a>
           <a href="#about">About</a>
-          <Link href="/matchmaking/">Matchmaking</Link>
+          <Link href="/shop/">Shop</Link>
         </div>
 
-        <a className="navigationButton" href="#creations">
-          Explore
-        </a>
+        <Link className="navigationButton" href="/shop/">
+          Shop
+        </Link>
       </nav>
       <section className="hero">
         <div className="heroContent">
