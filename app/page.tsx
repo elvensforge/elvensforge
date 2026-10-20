@@ -1,136 +1,106 @@
-import Link from "next/link";
-const features = [
-  {
-    title: "Terrain",
-    description:
-      "Immersive battlefield terrain designed for memorable tabletop encounters.",
-  },
-  {
-    title: "Painting Kits",
-    description:
-      "Creative kits, lighting components and accessories for miniature projects.",
-  },
-  {
-    title: "Collectibles",
-    description:
-      "Limited creations that combine craftsmanship, technology and fantasy.",
-  },
-];
+import type { Metadata } from "next";
+import ProjectImage from "@/components/project-image";
+import { CreationsGallery, ProductShowcase } from "@/components/showcase";
+import {
+  ContactSection,
+  SiteFooter,
+  SiteHeader,
+} from "@/components/site-shell";
+import { heroImage, pillars, siteDescription } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = pageMetadata(
+  "ElvensForge | LED Miniature Bases & Custom Creations",
+  siteDescription,
+  "/",
+);
 
 export default function HomePage() {
   return (
-    <main>
-      <nav className="navigation siteNavigation" aria-label="Main navigation">
-        <Link className="brand" href="/">
-          ELVENSFORGE
-        </Link>
-
-        <div className="navigationLinks">
-          <a href="#creations">Creations</a>
-          <a href="#about">About</a>
-          <Link href="/shop/">Shop</Link>
-        </div>
-
-        <Link className="navigationButton" href="/shop/">
-          Shop
-        </Link>
-      </nav>
-      <section className="hero">
-        <div className="heroContent">
-          <p className="eyebrow">ART · CRAFT · TECHNOLOGY</p>
-
-          <h1>
-            Forge worlds.
-            <br />
-            <span>Create legends.</span>
-          </h1>
-
-          <p className="heroDescription">
-            ElvensForge creates immersive terrain, painting experiences and
-            collectible artifacts for tabletop worlds.
-          </p>
-
-          <div className="heroActions">
-            <a className="primaryButton" href="#creations">
-              Explore the forge
-            </a>
-
-            <a className="secondaryButton" href="#about">
-              Discover our story
-            </a>
+    <>
+      <SiteHeader />
+      <main id="main-content" tabIndex={-1}>
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="heroContent">
+            <p className="eyebrow">
+              <span className="statusLight" aria-hidden="true" /> ART · CRAFT ·
+              TECHNOLOGY
+            </p>
+            <h1 id="hero-title">
+              Forge Worlds.
+              <br />
+              <span>Create Legends.</span>
+            </h1>
+            <p className="heroDescription">{siteDescription}</p>
+            <div className="heroActions">
+              <a className="primaryButton" href="#creations">
+                Explore Creations <span aria-hidden="true">↗</span>
+              </a>
+              <a className="secondaryButton" href="#shop">
+                Discover Our Products <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <p className="heroFootnote">
+              LED illumination. Digital fabrication. Original imagination.
+            </p>
           </div>
-        </div>
-
-        <div className="heroDecoration" aria-hidden="true">
-          <div className="forgeOrbit" />
-          <div className="forgeOrbit forgeOrbitSecond" />
-          <div className="forgeArtifact">
-            <span>EF</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="creationsSection" id="creations">
-        <div className="sectionHeading">
-          <p className="eyebrow">THE FORGE</p>
-          <h2>Crafted for extraordinary worlds</h2>
-          <p>
-            Physical creations made for hobbyists, collectors and players who
-            want their tabletop worlds to feel unique.
-          </p>
-        </div>
-
-        <div className="featureGrid">
-          {features.map((feature, index) => (
-            <article className="featureCard" key={feature.title}>
-              <span className="featureNumber">
-                {String(index + 1).padStart(2, "0")}
+          <figure className="heroMedia">
+            <div className="heroPhotoFrame">
+              <ProjectImage
+                image={heroImage}
+                label="Illuminated ElvensForge miniature"
+                hero
+              />
+            </div>
+            <figcaption>
+              <span>ELVENSFORGE / IN THE WORKSHOP</span>
+              <span>
+                {heroImage
+                  ? "Original project photography"
+                  : "Photo placeholder"}
               </span>
-
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-
-              <span className="comingSoon">Coming soon</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="aboutSection" id="about">
-        <div>
-          <p className="eyebrow">OUR PURPOSE</p>
-          <h2>More than scenery</h2>
-        </div>
-
-        <p>
-          We combine digital fabrication, artistic design and storytelling to
-          create objects that become part of your games, collections and
-          personal worlds.
-        </p>
-      </section>
-
-      <section className="communitySection" id="community">
-        <div className="communityPanel">
-          <p className="eyebrow">THE JOURNEY BEGINS</p>
-          <h2>Enter the world of ElvensForge</h2>
-          <p>
-            New creations, experiments and behind-the-scenes content are coming
-            soon.
-          </p>
-
-          <a className="secondaryButton" href="mailto:contact@elvensforge.com">
-            Contact the forge
-          </a>
-        </div>
-      </section>
-
-      <footer>
-        <Link className="brand" href="/">
-          ELVENSFORGE
-        </Link>
-
-        <p>© {new Date().getFullYear()} ElvensForge</p>
-      </footer>
-    </main>
+            </figcaption>
+          </figure>
+        </section>
+        <CreationsGallery />
+        <ProductShowcase />
+        <section
+          className="aboutSection"
+          id="about"
+          aria-labelledby="about-title"
+        >
+          <div className="aboutIntroduction">
+            <div>
+              <p className="eyebrow">03 / ABOUT THE FORGE</p>
+              <h2 id="about-title">
+                Where Art
+                <br />
+                Meets Engineering
+              </h2>
+            </div>
+            <p>
+              ElvensForge brings together digital fabrication, miniature
+              painting, electronics, and creative design to build unique
+              accessories for tabletop worlds. From precision-designed LED bases
+              to experimental illuminated creations, every project explores new
+              ways to make miniatures extraordinary.
+            </p>
+          </div>
+          <div className="pillarsGrid">
+            {pillars.map((pillar, index) => (
+              <article key={pillar.name}>
+                <span className="featureNumber" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <h3>{pillar.name}</h3>
+                <p>{pillar.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

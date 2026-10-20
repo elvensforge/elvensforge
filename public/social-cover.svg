@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs><radialGradient id="glow"><stop stop-color="#12323f"/><stop offset="1" stop-color="#07090d"/></radialGradient></defs>
+<rect width="1200" height="630" fill="#07090d"/><rect x="580" width="620" height="630" fill="url(#glow)"/>
+<path d="M64 116V64h52M1084 566h52v-52" fill="none" stroke="#00efef" stroke-width="2"/>
+<path d="M64 510h1072" stroke="#354d58"/>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="96" y="110" fill="#ffffff" font-size="24" font-weight="600" letter-spacing="5">ELVENSFORGE</text>
+<text x="96" y="258" fill="#f1f5f7" font-size="78" font-weight="600" letter-spacing="-2">Forge Worlds.</text>
+<text x="96" y="354" fill="#00efef" font-size="78" font-weight="600" letter-spacing="-2">Create Legends.</text>
+<text x="100" y="422" fill="#b5c1ca" font-size="24">LED miniature bases. Custom 3D-printed creations.</text>
+<text x="96" y="560" fill="#70dcd3" font-size="16" letter-spacing="4">ART · CRAFT · TECHNOLOGY</text></g>
+</svg>
