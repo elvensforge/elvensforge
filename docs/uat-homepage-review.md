@@ -49,3 +49,7 @@ Three user-supplied miniature images and both supplied logo files have been inco
 Four missing process/detail photographs now have real, clearly labelled, replaceable JPG assets: `led-base-lighting.jpg`, `led-installation-wiring.jpg`, `led-installation-strip.jpg` and `transformation-detail.jpg`. Every image frame is populated and dimensioned. These placeholders are geometric graphics, not fabricated product photography. Replacement instructions and image states are in `public/images/home/README.md` and `assets.json`.
 
 The result and illuminated-study slots intentionally reuse one supplied image. They are not claimed to be different shots or a controlled before/after sequence. Technical installation photographs, the catalogue, the demonstration video, official red swatch and policy/social destinations remain pending. The earlier pending-logo/hero/gallery statements above describe the initial implementation before these files were supplied.
+
+## Theme preference — 21 October 2026
+
+At the owner's request, UAT now uses the visual theme from `codex/design-reference`: blue-black surfaces, electric cyan primary actions, teal details and cool neutral borders/text. The earlier red interpretation is superseded. Current UAT content, section order, responsive navigation, supplied logos/images, nontransactional shop and noindex protection are retained. The four replaceable JPG graphics use the same cyan theme. No production or reference-branch changes are included.

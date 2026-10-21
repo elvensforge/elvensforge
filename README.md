@@ -25,7 +25,7 @@ Three showcase images and two logo sources have now been supplied and integrated
 
 `lib/home-content.ts` checks for each derivative at build time. Missing photographs remain labelled placeholders rather than broken URLs or generated miniature images. Add real files and rebuild. The included `scripts/prepare-home-image.mjs` can create optimized WebP derivatives without modifying the original masters. Verify subjects, alt text and orientation before publishing. Transformation studies are not presented as a controlled before/after comparison.
 
-The supplied white logo now appears alongside the wordmark in the header and footer; the supplied colour logo is used for social metadata. The existing favicon is preserved. No official red token has been confirmed. The red action palette is centralized in `app/globals.css` (`--action`, `--accent`) and needs brand-owner confirmation; it is not represented as a verified original colour measurement.
+The supplied white logo now appears alongside the wordmark in the header and footer; the supplied colour logo is used for social metadata. The existing favicon is preserved. The theme now follows `codex/design-reference`: blue-black surfaces, electric cyan actions and restrained teal details. Theme tokens are centralized in `app/globals.css`; the current UAT structure and supplied imagery are preserved.
 
 ## Pending links and catalogue
 
