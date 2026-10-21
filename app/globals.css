@@ -213,18 +213,41 @@ article[id] {
   background: var(--accent);
 }
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 64px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
   align-items: center;
-  padding-block: 64px 80px;
-  min-height: 760px;
+  min-height: clamp(700px, 56.3vw, 900px);
+  padding-block: 72px;
   border-bottom: 1px solid var(--divider);
-  background: radial-gradient(ellipse at 80% 60%, #0c293133, transparent 60%);
+  background: #05080c;
 }
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.heroBackground img {
+  object-fit: cover;
+  object-position: center;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #05080ce0 0%, #05080c8c 38%, #05080c14 75%);
+  pointer-events: none;
+}
+.heroContent {
+  width: 45%;
+  max-width: 560px;
+}
+
 .hero h1 {
   margin: 0;
-  font-size: clamp(58px, 6.8vw, 100px);
+  font-size: clamp(58px, 5.7vw, 82px);
   line-height: 0.98;
   letter-spacing: -0.018em;
 }
@@ -249,37 +272,6 @@ article[id] {
   font-size: 12px;
   letter-spacing: 0.07em;
   color: #a0b3bf;
-}
-.heroMedia {
-  min-width: 0;
-  width: 100%;
-  margin: 0;
-}
-.heroPhotoFrame {
-  padding: 10px;
-  border: 1px solid #354d58;
-  background: #0b151e;
-  position: relative;
-}
-.heroPhotoFrame::before {
-  position: absolute;
-  content: "";
-  top: -1px;
-  left: -1px;
-  width: 48px;
-  height: 2px;
-  background: var(--accent);
-  z-index: 1;
-}
-.heroMedia figcaption {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: space-between;
-  padding-top: 14px;
-  color: #9dafba;
-  font-size: 10px;
-  letter-spacing: 0.06em;
 }
 .projectImage {
   position: relative;
@@ -825,11 +817,8 @@ article[id] {
   .brand {
     font-size: 13px;
   }
-  .hero {
-    gap: 32px;
-  }
   .hero h1 {
-    font-size: clamp(62px, 7.8vw, 88px);
+    font-size: clamp(58px, 5.7vw, 82px);
   }
   .productIntroduction {
     gap: 48px;
@@ -923,12 +912,6 @@ article[id] {
   :root {
     --section-space: 64px;
   }
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-    padding-block: 48px;
-    gap: 40px;
-    min-height: 0;
-  }
   .hero h1 {
     font-size: clamp(60px, 12vw, 84px);
   }
@@ -939,14 +922,8 @@ article[id] {
   .heroDescription {
     max-width: 600px;
   }
-  .heroMedia {
-    max-width: 600px;
-  }
   .projectImageHero {
     aspect-ratio: 3/4;
-  }
-  .heroPhotoFrame {
-    padding: 8px;
   }
   .productIntroduction {
     grid-template-columns: minmax(0, 1fr);
@@ -1052,9 +1029,6 @@ article[id] {
   }
   .heroFootnote {
     font-size: 11px;
-  }
-  .heroMedia figcaption {
-    font-size: 9px;
   }
   .sectionHeading h2,
   .introductionContent h2,
@@ -1163,4 +1137,19 @@ article[id] {
 }
 .primaryButton:hover {
   box-shadow: 0 0 24px #00efef15;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .heroContent { width: 50%; }
+  .heroBackground img { object-position: 58% center; }
+  .hero::before { background: linear-gradient(90deg, #05080cf0, #05080c9c 42%, #05080c14 80%); }
+}
+@media (max-width: 767px) {
+  .hero { min-height: 0; padding-top: clamp(300px, 72vw, 480px); padding-bottom: 48px; }
+  .heroBackground { bottom: auto; height: clamp(360px, 82vw, 560px); }
+  .heroBackground img { object-position: 65% center; }
+  .hero::before { background: linear-gradient(180deg, transparent 12%, #05080c14 25%, #05080c 48%); }
+  .heroContent { width: 100%; max-width: 600px; }
+  .hero h1 { font-size: clamp(48px, 10vw, 72px); }
+  .heroDescription { max-width: 540px; }
 }

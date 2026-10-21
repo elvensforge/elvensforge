@@ -70,6 +70,13 @@
       "placeholder": false,
       "source": "codex-clipboard-7792707b-3904-4c25-b72d-659e2957a6a8.png",
       "sourceSha256": "d38f50327744b4454ef175478d3896feff2d0c78883bb58be78f0c1d38816caf"
+    },
+    "hero-blue-ruins.webp": {
+      "width": 1672,
+      "height": 941,
+      "placeholder": false,
+      "source": "Neon Mech in the Blue Ruins.png",
+      "sourceSha256": "b272067c44890a900809387f2e848d13b08778a06ef656a83397fad92ef82f85"
     }
   }
 }

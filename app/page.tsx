@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ProjectImage from "@/components/project-image";
 import { ProductShowcase } from "@/components/showcase";
 import {
@@ -22,6 +23,9 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
         <section className="hero" id="home" aria-labelledby="hero-title">
+          <div className="heroBackground" aria-hidden="true">
+            <Image src="/images/home/hero-blue-ruins.webp" alt="" fill sizes="100vw" preload />
+          </div>
           <div className="heroContent">
             <p className="eyebrow">ART · CRAFT · TECHNOLOGY</p>
             <h1 id="hero-title">
@@ -46,24 +50,6 @@ export default function HomePage() {
             </div>
             <p className="heroFootnote">Forge Worlds. Create Legends.</p>
           </div>
-          <figure className="heroMedia">
-            <div className="heroPhotoFrame">
-              <ProjectImage
-                image={homeMedia.hero}
-                mobileImage={homeMedia.mobileHero}
-                label="Nightbringer illuminated miniature"
-                hero
-              />
-            </div>
-            <figcaption>
-              <span>ELVENSFORGE / LED-READY BASES</span>
-              <span>
-                {homeMedia.hero || homeMedia.mobileHero
-                  ? "ElvensForge supplied imagery"
-                  : "Original photo pending"}
-              </span>
-            </figcaption>
-          </figure>
         </section>
         <section
           className="productIntroduction"
