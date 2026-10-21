@@ -93,7 +93,7 @@ export const homeMedia = {
   ),
   galleryPsychomancer: originalImage(
     "gallery-psychomancer.webp",
-    "ElvensForge supplied miniature with a staff and green illumination.",
+    "ElvensForge mechanical miniature with a skull-like head, clawed limbs and green illuminated base.",
     1000,
     1200,
   ),
