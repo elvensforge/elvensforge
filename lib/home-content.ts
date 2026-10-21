@@ -75,7 +75,7 @@ export const homeMedia = {
   ),
   transformationLight: originalImage(
     "transformation-illuminated.webp",
-    "Original ElvensForge illuminated miniature study.",
+    "ElvensForge Void Dragon miniature with bright green illuminated weapon and details on a scenic base.",
     1000,
     1200,
   ),
