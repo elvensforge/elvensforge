@@ -141,7 +141,7 @@ article[id] {
   align-items: center;
   min-height: 44px;
 }
-.navigationLinks a:hover {
+.navigationLinks a:not(.navShop):hover {
   color: white;
 }
 .navigationLinks .navShop {
@@ -1153,8 +1153,8 @@ article[id] {
   color: #c0d3db;
   font-size: 10px;
 }
-.navigationLinks a:hover,
-.navigationLinks a[aria-current],
+.navigationLinks a:not(.navShop):hover,
+.navigationLinks a:not(.navShop)[aria-current],
 .footerNavigation a:hover {
   color: var(--accent);
 }
