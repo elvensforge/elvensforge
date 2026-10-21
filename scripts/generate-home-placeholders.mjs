@@ -21,12 +21,6 @@ const placeholders = [
     width: 1000,
     height: 750,
   },
-  {
-    file: "transformation-detail.jpg",
-    label: "TRANSFORMATION / DETAIL STUDY",
-    width: 1000,
-    height: 1200,
-  },
 ];
 const manifest = JSON.parse(
   await fs.readFile(path.join(directory, "assets.json"), "utf8"),

@@ -69,7 +69,7 @@ export const homeMedia = {
   ),
   transformationDetail: originalImage(
     "transformation-detail.webp",
-    "Original ElvensForge miniature detail study.",
+    "ElvensForge Void Dragon miniature with metallic surfaces and green details on a scenic base.",
     1000,
     1200,
   ),

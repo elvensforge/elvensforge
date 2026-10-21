@@ -64,10 +64,12 @@
       "height": 750,
       "placeholder": true
     },
-    "transformation-detail.jpg": {
-      "width": 1000,
+    "transformation-detail.webp": {
+      "width": 900,
       "height": 1200,
-      "placeholder": true
+      "placeholder": false,
+      "source": "codex-clipboard-7792707b-3904-4c25-b72d-659e2957a6a8.png",
+      "sourceSha256": "d38f50327744b4454ef175478d3896feff2d0c78883bb58be78f0c1d38816caf"
     }
   }
 }

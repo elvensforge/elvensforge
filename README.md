@@ -21,7 +21,7 @@ The previous UAT commerce scaffolding has been removed to keep this implementati
 
 ## Required original photography
 
-Three showcase images and two logo sources have now been supplied and integrated. Four missing process/detail images use explicit, replaceable JPG files. See `public/images/home/README.md` for exact filenames and replacement instructions. All supplied sources remain unchanged.
+Three showcase images and two logo sources have now been supplied and integrated. Three missing process images use explicit, replaceable JPG files. The transformation detail image has now been supplied and integrated. See `public/images/home/README.md` for exact filenames and replacement instructions. All supplied sources remain unchanged.
 
 `lib/home-content.ts` checks for each derivative at build time. Missing photographs remain labelled placeholders rather than broken URLs or generated miniature images. Add real files and rebuild. The included `scripts/prepare-home-image.mjs` can create optimized WebP derivatives without modifying the original masters. Verify subjects, alt text and orientation before publishing. Transformation studies are not presented as a controlled before/after comparison.
 

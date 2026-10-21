@@ -168,7 +168,6 @@ export default function HomePage() {
           </div>
           <p className="sectionNote">
             Separate image studies, not a controlled before/after comparison.
-            The detail photograph is pending.
           </p>
           <div className="videoPlaceholder">
             <span className="videoMark" aria-hidden="true">

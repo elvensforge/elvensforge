@@ -9,7 +9,6 @@ Las imágenes suministradas y los logos ya están conectados al maquetado. Los o
 | `led-base-lighting.jpg`       | Base con el sistema de iluminación visible | 1200 × 900         |
 | `led-installation-wiring.jpg` | Cableado del montaje                       | 1000 × 750         |
 | `led-installation-strip.jpg`  | Colocación de los LED                      | 1000 × 750         |
-| `transformation-detail.jpg`   | Fotografía de detalle para la secuencia    | 1000 × 1200        |
 
 Estos JPG contienen únicamente un gráfico con el nombre del archivo y la etiqueta «Replaceable image placeholder». No representan productos ni montajes reales.
 
@@ -25,7 +24,7 @@ También puedes añadir un WebP con el mismo nombre base; tiene prioridad sobre 
 node scripts/prepare-home-image.mjs /ruta/a/tu-original.jpg led-base-lighting.webp 1200 900
 ```
 
-`scripts/generate-home-placeholders.mjs` crea únicamente los JPG ausentes y nunca sobrescribe un archivo existente. La galería utiliza las imágenes suministradas; la foto del resultado iluminado y la secuencia reutilizan una de ellas, sin presentarla como otra toma ni como una comparación antes/después.
+`scripts/generate-home-placeholders.mjs` crea únicamente los JPG ausentes y nunca sobrescribe un archivo existente. La sección de transformación ya utiliza la nueva imagen de detalle suministrada (`transformation-detail.webp`). La galería utiliza las imágenes suministradas; la foto del resultado iluminado y la secuencia reutilizan una de ellas, sin presentarla como otra toma ni como una comparación antes/después.
 
 El nombre histórico `gallery-psychomancer.webp` se conserva como ubicación del tercer espacio de galería, pero su leyenda visible es genérica: no se da por confirmado el modelo concreto de esa imagen.
 
