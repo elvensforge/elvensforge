@@ -51,7 +51,7 @@ export default function HomePage() {
               <ProjectImage
                 image={homeMedia.hero}
                 mobileImage={homeMedia.mobileHero}
-                label="Void Dragon / Nightbringer original photograph"
+                label="Nightbringer illuminated miniature"
                 hero
               />
             </div>

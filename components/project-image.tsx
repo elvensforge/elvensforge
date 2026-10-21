@@ -25,8 +25,8 @@ export default function ProjectImage({
               alt={
                 main.placeholder
                   ? `Replaceable image placeholder: ${label}. Original photograph pending.`
-                  : mobileImage && image
-                    ? "ElvensForge illuminated miniature: Void Dragon on desktop, Nightbringer on mobile."
+                  : mobileImage && image && mobileImage.alt !== image.alt
+                    ? `${image.alt} On smaller screens: ${mobileImage.alt}`
                     : main.alt
               }
               width={main.width}

@@ -32,10 +32,10 @@ function originalImage(
 }
 export const homeMedia = {
   hero: originalImage(
-    "hero-void-dragon.webp",
-    "ElvensForge Void Dragon miniature with illuminated LED-ready base.",
-    1600,
-    1800,
+    "hero-nightbringer-mobile.webp",
+    "ElvensForge Nightbringer miniature with illuminated base.",
+    900,
+    1200,
   ),
   mobileHero: originalImage(
     "hero-nightbringer-mobile.webp",
