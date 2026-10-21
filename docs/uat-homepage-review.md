@@ -41,3 +41,11 @@ Existing non-blocking Next.js warning: missing Cal Sans fallback metrics. Font l
 6. Original Open Graph photograph, enabled when a real hero asset is supplied.
 
 The layout is implemented and locally verified; the photography acceptance criterion is not complete until the originals are provided and visually reviewed.
+
+## Asset update — 21 October 2026
+
+Three user-supplied miniature images and both supplied logo files have been incorporated. The hero switches between the supplied desktop and mobile images, the gallery uses all three images, and the supplied white emblem is in the header/footer. The colour emblem supplies the Open Graph image. The five original files were read-only inputs and their SHA-256 hashes remained unchanged.
+
+Four missing process/detail photographs now have real, clearly labelled, replaceable JPG assets: `led-base-lighting.jpg`, `led-installation-wiring.jpg`, `led-installation-strip.jpg` and `transformation-detail.jpg`. Every image frame is populated and dimensioned. These placeholders are geometric graphics, not fabricated product photography. Replacement instructions and image states are in `public/images/home/README.md` and `assets.json`.
+
+The result and illuminated-study slots intentionally reuse one supplied image. They are not claimed to be different shots or a controlled before/after sequence. Technical installation photographs, the catalogue, the demonstration video, official red swatch and policy/social destinations remain pending. The earlier pending-logo/hero/gallery statements above describe the initial implementation before these files were supplied.

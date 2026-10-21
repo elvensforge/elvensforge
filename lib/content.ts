@@ -1,4 +1,5 @@
 export type ShowcaseImage = {
+  placeholder?: boolean;
   src: string;
   alt: string;
   width: number;

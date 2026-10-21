@@ -1,29 +1,40 @@
-# Original homepage photography
+# Imágenes de la portada UAT
 
-Only add authorized original ElvensForge photography. No stock images or generated miniatures. Keep the master photographs unchanged, outside this public folder. Every file in `public/` becomes publicly accessible when deployed.
+Las imágenes suministradas y los logos ya están conectados al maquetado. Los originales entregados no se han modificado: la web usa derivados WebP/PNG/JPG optimizados. No se ha añadido ni modificado generativamente ninguna miniatura.
 
-| Web derivative                  | Intended photograph                | Width × height |
-| ------------------------------- | ---------------------------------- | -------------- |
-| hero-void-dragon.webp           | Desktop hero: original Void Dragon | 1600 × 1800    |
-| hero-nightbringer-mobile.webp   | Mobile hero: original Nightbringer | 900 × 1200     |
-| led-base-lighting.webp          | Base with lighting system visible  | 1200 × 900     |
-| led-installation-wiring.webp    | Base / wiring layout               | 1000 × 750     |
-| led-installation-strip.webp     | LED positioning                    | 1000 × 750     |
-| led-installation-result.webp    | Illuminated result                 | 1000 × 750     |
-| transformation-detail.webp      | Original detail study              | 1000 × 1200    |
-| transformation-illuminated.webp | Original illuminated study         | 1000 × 1200    |
-| gallery-void-dragon.webp        | Void Dragon gallery photograph     | 1000 × 1200    |
-| gallery-nightbringer.webp       | Nightbringer gallery photograph    | 1000 × 1200    |
-| gallery-psychomancer.webp       | Psychomancer gallery photograph    | 1000 × 1200    |
+## JPG pendientes que puedes sustituir
 
-Create derivatives with the included script, for example:
+| Archivo                       | Contenido pendiente                        | Tamaño recomendado |
+| ----------------------------- | ------------------------------------------ | ------------------ |
+| `led-base-lighting.jpg`       | Base con el sistema de iluminación visible | 1200 × 900         |
+| `led-installation-wiring.jpg` | Cableado del montaje                       | 1000 × 750         |
+| `led-installation-strip.jpg`  | Colocación de los LED                      | 1000 × 750         |
+| `transformation-detail.jpg`   | Fotografía de detalle para la secuencia    | 1000 × 1200        |
+
+Estos JPG contienen únicamente un gráfico con el nombre del archivo y la etiqueta «Replaceable image placeholder». No representan productos ni montajes reales.
+
+Para sustituirlos:
+
+1. Reemplaza el JPG por tu fotografía usando el mismo nombre. Conserva la proporción o actualiza sus dimensiones en `assets.json`.
+2. En la entrada correspondiente de `assets.json`, cambia `placeholder` a `false` y revisa el texto alternativo en `lib/home-content.ts`.
+3. Reconstruye y despliega **UAT**. No hay que cambiar el maquetado.
+
+También puedes añadir un WebP con el mismo nombre base; tiene prioridad sobre el JPG. Para generar un derivado conservando el original:
 
 ```sh
-node scripts/prepare-home-image.mjs /path/to/original-void-dragon.jpg hero-void-dragon.webp 1600 1800
+node scripts/prepare-home-image.mjs /ruta/a/tu-original.jpg led-base-lighting.webp 1200 900
 ```
 
-The script uses Sharp already installed with Next.js. It preserves the original, respects EXIF orientation, fits the full photograph inside the target canvas and pads the remaining space with a dark background. It never generates or alters the miniature. Existing output files are not overwritten automatically.
+`scripts/generate-home-placeholders.mjs` crea únicamente los JPG ausentes y nunca sobrescribe un archivo existente. La galería utiliza las imágenes suministradas; la foto del resultado iluminado y la secuencia reutilizan una de ellas, sin presentarla como otra toma ni como una comparación antes/después.
 
-Review each image, its alt text and the intended subject in `lib/home-content.ts` before deploying. The listed dimensions describe derivative canvases, not the dimensions of the missing master photographs. Update the configuration if a different derivative size is used. Missing files remain explicit photo placeholders and are never linked as broken images. Rebuild after adding files.
+El nombre histórico `gallery-psychomancer.webp` se conserva como ubicación del tercer espacio de galería, pero su leyenda visible es genérica: no se da por confirmado el modelo concreto de esa imagen.
 
-The transformation panels are independent photographic studies. Do not label them before/after unless the same subject and setup are verified. The optional demonstration video has a reserved layout but no fake play button or video URL.
+## Recursos incorporados
+
+- `hero-void-dragon.webp`: imagen suministrada para escritorio.
+- `hero-nightbringer-mobile.webp`: imagen suministrada para móvil.
+- `gallery-void-dragon.webp`, `gallery-nightbringer.webp`, `gallery-psychomancer.webp`: galería.
+- `led-installation-result.webp`, `transformation-illuminated.webp`: reutilización del resultado suministrado.
+- `../brand/`: logo blanco, logo a color e imagen de marca para compartir.
+
+`assets.json` registra dimensiones, estado de sustitución y hashes SHA-256 de las imágenes fuente. Los tamaños son de los derivados usados por la web. Los archivos publicados son accesibles públicamente; conserva los originales de cámara fuera de `public/`.

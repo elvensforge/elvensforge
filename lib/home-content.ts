@@ -1,6 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { ShowcaseImage } from "./content";
+import manifest from "@/public/images/home/assets.json";
+const assetInfo = manifest.assets as Record<
+  string,
+  { width: number; height: number; placeholder: boolean }
+>;
 
 // Resolved at build time: missing originals never become broken public image URLs.
 function originalImage(
@@ -10,9 +15,20 @@ function originalImage(
   height: number,
   position = "center",
 ): ShowcaseImage | undefined {
-  if (!fs.existsSync(path.join(process.cwd(), "public/images/home", filename)))
-    return undefined;
-  return { src: `/images/home/${filename}`, alt, width, height, position };
+  const directory = path.join(process.cwd(), "public/images/home");
+  const selected = [filename, filename.replace(/\.webp$/, ".jpg")].find(
+    (file) => fs.existsSync(path.join(directory, file)),
+  );
+  if (!selected) return undefined;
+  const info = assetInfo[selected];
+  return {
+    src: `/images/home/${selected}`,
+    alt,
+    width: info?.width || width,
+    height: info?.height || height,
+    position,
+    placeholder: info?.placeholder || false,
+  };
 }
 export const homeMedia = {
   hero: originalImage(
@@ -77,7 +93,7 @@ export const homeMedia = {
   ),
   galleryPsychomancer: originalImage(
     "gallery-psychomancer.webp",
-    "Psychomancer miniature shown with illuminated scenery.",
+    "ElvensForge supplied miniature with a staff and green illumination.",
     1000,
     1200,
   ),
@@ -116,11 +132,11 @@ export const gallery = [
     label: "Nightbringer photograph",
   },
   {
-    title: "Psychomancer",
+    title: "Illuminated Miniature",
     image: homeMedia.galleryPsychomancer,
-    label: "Psychomancer photograph",
+    label: "ElvensForge illuminated miniature",
   },
 ];
 export const missingHomeAssets = Object.entries(homeMedia)
-  .filter(([, image]) => !image)
+  .filter(([, image]) => !image || image.placeholder)
   .map(([key]) => key);

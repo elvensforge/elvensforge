@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { legalLinks, socialProfiles } from "@/lib/content";
 import MobileNavigation from "./mobile-navigation";
@@ -7,7 +8,14 @@ export function SiteHeader({ shopPage = false }: { shopPage?: boolean }) {
     <header className="siteHeader">
       <nav className="navigation siteNavigation" aria-label="Main navigation">
         <Link className="brand" href="/" aria-label="ElvensForge home">
-          ELVENSFORGE
+          <Image
+            className="brandMark"
+            src="/images/brand/elvensforge-mark.png"
+            width={34}
+            height={36}
+            alt=""
+          />
+          <span>ELVENSFORGE</span>
         </Link>
         <MobileNavigation shopPage={shopPage} />
       </nav>
@@ -69,7 +77,14 @@ export function SiteFooter({ shopPage = false }: { shopPage?: boolean }) {
       <div className="footerMain">
         <div>
           <Link className="brand" href="/">
-            ELVENSFORGE
+            <Image
+              className="brandMark"
+              src="/images/brand/elvensforge-mark.png"
+              width={34}
+              height={36}
+              alt=""
+            />
+            <span>ELVENSFORGE</span>
           </Link>
           <p className="footerSignature">Forge Worlds. Create Legends.</p>
           <p>Art · Craft · Technology</p>

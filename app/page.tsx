@@ -59,7 +59,7 @@ export default function HomePage() {
               <span>ELVENSFORGE / LED-READY BASES</span>
               <span>
                 {homeMedia.hero || homeMedia.mobileHero
-                  ? "Original ElvensForge photography"
+                  ? "ElvensForge supplied imagery"
                   : "Original photo pending"}
               </span>
             </figcaption>
@@ -167,8 +167,8 @@ export default function HomePage() {
             </figure>
           </div>
           <p className="sectionNote">
-            Photographic sequence pending. Images will only be labelled before
-            and after when the same subject and setup are verified.
+            Separate image studies, not a controlled before/after comparison.
+            The detail photograph is pending.
           </p>
           <div className="videoPlaceholder">
             <span className="videoMark" aria-hidden="true">
@@ -244,7 +244,7 @@ export default function HomePage() {
                   <h3>{item.title}</h3>
                   <p>
                     {item.image
-                      ? "Original ElvensForge project photograph."
+                      ? "ElvensForge showcase image."
                       : "Original photograph pending."}
                   </p>
                 </figcaption>

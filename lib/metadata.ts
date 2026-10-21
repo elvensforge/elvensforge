@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
 import { siteOrigin } from "./content";
-import { homeMedia } from "./home-content";
+
 export function pageMetadata(
   title: string,
   description: string,
   pathname: string,
 ): Metadata {
   const url = siteOrigin ? new URL(pathname, siteOrigin).href : undefined;
-  const original = homeMedia.hero;
-  const image =
-    siteOrigin && original
-      ? [
-          {
-            url: new URL(original.src, siteOrigin).href,
-            width: original.width,
-            height: original.height,
-            alt: original.alt,
-          },
-        ]
-      : undefined;
+
+  const image = siteOrigin
+    ? [
+        {
+          url: new URL("/images/brand/elvensforge-social.jpg", siteOrigin).href,
+          width: 1200,
+          height: 630,
+          alt: "ElvensForge brand emblem supplied by ElvensForge",
+        },
+      ]
+    : undefined;
   return {
     title,
     description,

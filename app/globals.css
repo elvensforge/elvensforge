@@ -1132,3 +1132,24 @@ article[id] {
     animation: none !important;
   }
 }
+
+.brand {
+  gap: 12px;
+}
+.brandMark {
+  display: block;
+  flex-shrink: 0;
+  width: 34px;
+  height: 36px;
+  object-fit: contain;
+}
+.imagePlaceholderTag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 8px;
+  background: #151017;
+  border: 1px solid #755766;
+  color: #ead5dd;
+  font-size: 10px;
+}

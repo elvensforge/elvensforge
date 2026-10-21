@@ -1,0 +1,73 @@
+{
+  "assets": {
+    "hero-void-dragon.webp": {
+      "width": 1086,
+      "height": 1448,
+      "placeholder": false,
+      "source": "file_00000000910482469b8dec65886bc5c8.png",
+      "sourceSha256": "64becb5ab082877240910dd71aa47f82eefd8d429de8cec3ef0fd54037b9016f"
+    },
+    "hero-nightbringer-mobile.webp": {
+      "width": 900,
+      "height": 1200,
+      "placeholder": false,
+      "source": "file_000000001fac81f4a58580ef3e2c64a5.png",
+      "sourceSha256": "44ef1cf946ee8a04ea344b2e2b6d7fd13abdca27d57e91034471a005c927a391"
+    },
+    "gallery-void-dragon.webp": {
+      "width": 750,
+      "height": 1000,
+      "placeholder": false,
+      "source": "file_00000000910482469b8dec65886bc5c8.png",
+      "sourceSha256": "64becb5ab082877240910dd71aa47f82eefd8d429de8cec3ef0fd54037b9016f"
+    },
+    "gallery-nightbringer.webp": {
+      "width": 750,
+      "height": 1000,
+      "placeholder": false,
+      "source": "file_000000001fac81f4a58580ef3e2c64a5.png",
+      "sourceSha256": "44ef1cf946ee8a04ea344b2e2b6d7fd13abdca27d57e91034471a005c927a391"
+    },
+    "gallery-psychomancer.webp": {
+      "width": 750,
+      "height": 1000,
+      "placeholder": false,
+      "source": "file_00000000965081f48137ab2bd0cc1dae.png",
+      "sourceSha256": "1c6371ffe53c560e52e5a279acb0f99ce6705380e5044728bef7b17ad8b7dadf"
+    },
+    "led-installation-result.webp": {
+      "width": 750,
+      "height": 1000,
+      "placeholder": false,
+      "source": "file_00000000910482469b8dec65886bc5c8.png",
+      "sourceSha256": "64becb5ab082877240910dd71aa47f82eefd8d429de8cec3ef0fd54037b9016f"
+    },
+    "transformation-illuminated.webp": {
+      "width": 900,
+      "height": 1200,
+      "placeholder": false,
+      "source": "file_00000000910482469b8dec65886bc5c8.png",
+      "sourceSha256": "64becb5ab082877240910dd71aa47f82eefd8d429de8cec3ef0fd54037b9016f"
+    },
+    "led-base-lighting.jpg": {
+      "width": 1200,
+      "height": 900,
+      "placeholder": true
+    },
+    "led-installation-wiring.jpg": {
+      "width": 1000,
+      "height": 750,
+      "placeholder": true
+    },
+    "led-installation-strip.jpg": {
+      "width": 1000,
+      "height": 750,
+      "placeholder": true
+    },
+    "transformation-detail.jpg": {
+      "width": 1000,
+      "height": 1200,
+      "placeholder": true
+    }
+  }
+}

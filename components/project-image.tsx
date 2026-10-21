@@ -15,30 +15,37 @@ export default function ProjectImage({
   return (
     <div className={`projectImage${hero ? " projectImageHero" : ""}`}>
       {main ? (
-        <picture>
-          {mobileImage && image && (
-            <source media="(max-width: 760px)" srcSet={mobileImage.src} />
+        <>
+          <picture>
+            {mobileImage && image && (
+              <source media="(max-width: 760px)" srcSet={mobileImage.src} />
+            )}
+            <Image
+              src={main.src}
+              alt={
+                main.placeholder
+                  ? `Replaceable image placeholder: ${label}. Original photograph pending.`
+                  : mobileImage && image
+                    ? "ElvensForge illuminated miniature: Void Dragon on desktop, Nightbringer on mobile."
+                    : main.alt
+              }
+              width={main.width}
+              height={main.height}
+              sizes={
+                hero
+                  ? "(max-width: 760px) 100vw, 55vw"
+                  : "(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 33vw"
+              }
+              preload={hero && !mobileImage}
+              fetchPriority={hero ? "high" : undefined}
+              loading={hero ? "eager" : "lazy"}
+              style={{ objectPosition: main.position || "center" }}
+            />
+          </picture>
+          {main.placeholder && (
+            <span className="imagePlaceholderTag">Replaceable JPG</span>
           )}
-          <Image
-            src={main.src}
-            alt={
-              mobileImage && image
-                ? "Original ElvensForge illuminated miniature: Void Dragon on desktop, Nightbringer on mobile."
-                : main.alt
-            }
-            width={main.width}
-            height={main.height}
-            sizes={
-              hero
-                ? "(max-width: 760px) 100vw, 55vw"
-                : "(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 33vw"
-            }
-            preload={hero && !mobileImage}
-            fetchPriority={hero ? "high" : undefined}
-            loading={hero ? "eager" : "lazy"}
-            style={{ objectPosition: main.position || "center" }}
-          />
-        </picture>
+        </>
       ) : (
         <div
           className="photoPlaceholder"

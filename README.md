@@ -21,11 +21,11 @@ The previous UAT commerce scaffolding has been removed to keep this implementati
 
 ## Required original photography
 
-No original miniature photographs were included in the supplied attachment or current repository. See `public/images/home/README.md` for the requested asset names and derivative dimensions. Originals must be supplied before photography acceptance can be completed.
+Three showcase images and two logo sources have now been supplied and integrated. Four missing process/detail images use explicit, replaceable JPG files. See `public/images/home/README.md` for exact filenames and replacement instructions. All supplied sources remain unchanged.
 
 `lib/home-content.ts` checks for each derivative at build time. Missing photographs remain labelled placeholders rather than broken URLs or generated miniature images. Add real files and rebuild. The included `scripts/prepare-home-image.mjs` can create optimized WebP derivatives without modifying the original masters. Verify subjects, alt text and orientation before publishing. Transformation studies are not presented as a controlled before/after comparison.
 
-No separate logo asset or official red token was found in UAT. The existing wordmark and favicon are preserved. The red action palette is centralized in `app/globals.css` (`--action`, `--accent`) and needs brand-owner confirmation; it is not represented as a verified original colour measurement.
+The supplied white logo now appears alongside the wordmark in the header and footer; the supplied colour logo is used for social metadata. The existing favicon is preserved. No official red token has been confirmed. The red action palette is centralized in `app/globals.css` (`--action`, `--accent`) and needs brand-owner confirmation; it is not represented as a verified original colour measurement.
 
 ## Pending links and catalogue
 
