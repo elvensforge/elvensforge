@@ -1153,3 +1153,28 @@ article[id] {
   .hero h1 { font-size: clamp(48px, 10vw, 72px); }
   .heroDescription { max-width: 540px; }
 }
+
+/* Each 7.5s slot contains 6s at rest and a 1.5s dissolve.
+   Keep slide one opaque beneath the others to avoid a black compositing gap. */
+.heroSlide { opacity: 0; }
+.heroSlide1 { opacity: 1; }
+.heroSlide2 { animation: heroSecond 22.5s linear infinite; }
+.heroSlide3 { animation: heroThird 22.5s linear infinite; }
+.heroSlide2, .heroSlide3 { animation-play-state: paused; }
+.heroBackground[data-running="true"] .heroSlide { animation-play-state: running; }
+@keyframes heroSecond {
+  0%, 26.666667% { opacity: 0; }
+  33.333333%, 66.666% { opacity: 1; }
+  66.667%, 100% { opacity: 0; }
+}
+@keyframes heroThird {
+  0%, 60% { opacity: 0; }
+  66.666667%, 93.333333% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (max-width: 767px) {
+  .heroBackground .heroSlide2 { object-position: 75% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroSlide2, .heroSlide3 { animation: none; opacity: 0; }
+}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import HeroSlideshow from "@/components/hero-slideshow";
 import ProjectImage from "@/components/project-image";
 import { ProductShowcase } from "@/components/showcase";
 import {
@@ -23,9 +23,7 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
         <section className="hero" id="home" aria-labelledby="hero-title">
-          <div className="heroBackground" aria-hidden="true">
-            <Image src="/images/home/hero-blue-ruins.webp" alt="" fill sizes="100vw" preload />
-          </div>
+          <HeroSlideshow />
           <div className="heroContent">
             <p className="eyebrow">ART · CRAFT · TECHNOLOGY</p>
             <h1 id="hero-title">

@@ -77,6 +77,20 @@
       "placeholder": false,
       "source": "Neon Mech in the Blue Ruins.png",
       "sourceSha256": "b272067c44890a900809387f2e848d13b08778a06ef656a83397fad92ef82f85"
+    },
+    "hero-void-dragon-orbit.webp": {
+      "width": 1672,
+      "height": 941,
+      "placeholder": false,
+      "source": "Neon Green Guardian in Ruined Orbit.png",
+      "sourceSha256": "4a27165e58773675989d981320011fbb8bb9431dc86c88aaee56455f11cb0c84"
+    },
+    "hero-nekrosor-ruins.webp": {
+      "width": 1672,
+      "height": 941,
+      "placeholder": false,
+      "source": "Neon Necromancer Among Cosmic Ruins.png",
+      "sourceSha256": "963df0d9f4036ce7a8a9355642b5fc092cf6fa298cda91a4bc06d578e2722b05"
     }
   }
 }
