@@ -182,40 +182,6 @@ export default function HomePage() {
           </div>
         </section>
         <section
-          className="aboutSection"
-          id="about"
-          aria-labelledby="about-title"
-        >
-          <div className="aboutIntroduction">
-            <div>
-              <p className="eyebrow">THE CREATIVE FORGE</p>
-              <h2 id="about-title">
-                More Than a Workshop.
-                <br />A Creative Forge.
-              </h2>
-            </div>
-            <div>
-              <p>
-                ElvensForge brings together art, craftsmanship and technology to
-                explore new possibilities for tabletop gaming, miniature
-                painting and immersive creations.
-              </p>
-              <p className="brandSignature">Forge Worlds. Create Legends.</p>
-            </div>
-          </div>
-          <div className="pillarsGrid">
-            {pillars.map((pillar, index) => (
-              <article key={pillar.name}>
-                <span className="featureNumber" aria-hidden="true">
-                  0{index + 1}
-                </span>
-                <h3>{pillar.name}</h3>
-                <p>{pillar.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-        <section
           className="creationsSection"
           id="gallery"
           aria-labelledby="gallery-title"
@@ -255,6 +221,40 @@ export default function HomePage() {
             Miniatures and painted scenery shown for demonstration purposes
             only.
           </p>
+        </section>
+        <section
+          className="aboutSection"
+          id="about"
+          aria-labelledby="about-title"
+        >
+          <div className="aboutIntroduction">
+            <div>
+              <p className="eyebrow">THE CREATIVE FORGE</p>
+              <h2 id="about-title">
+                More Than a Workshop.
+                <br />A Creative Forge.
+              </h2>
+            </div>
+            <div>
+              <p>
+                ElvensForge brings together art, craftsmanship and technology to
+                explore new possibilities for tabletop gaming, miniature
+                painting and immersive creations.
+              </p>
+              <p className="brandSignature">Forge Worlds. Create Legends.</p>
+            </div>
+          </div>
+          <div className="pillarsGrid">
+            {pillars.map((pillar, index) => (
+              <article key={pillar.name}>
+                <span className="featureNumber" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <h3>{pillar.name}</h3>
+                <p>{pillar.description}</p>
+              </article>
+            ))}
+          </div>
         </section>
         <ContactSection />
       </main>
