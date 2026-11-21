@@ -1,13 +1,17 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { NavigationSignedIn } from "./auth-navigation-context";
 
 export default function MobileNavigation({
   shopPage = false,
+  accountPage = false,
 }: {
   shopPage?: boolean;
+  accountPage?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const signedIn = useContext(NavigationSignedIn);
   const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (!open) return;
@@ -20,9 +24,9 @@ export default function MobileNavigation({
     document.addEventListener("keydown", closeOnEscape);
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [open]);
-  const home = shopPage ? "/" : "";
+  const home = shopPage || accountPage ? "/" : "";
   const links = [
-    { label: "Home", href: shopPage ? "/" : "#home" },
+    { label: "Home", href: home || "#home" },
     { label: "LED Bases", href: `${home}#led-bases` },
     { label: "How It Works", href: `${home}#how-it-works` },
     { label: "Gallery", href: `${home}#gallery` },
@@ -59,6 +63,21 @@ export default function MobileNavigation({
             {link.label === "Shop" && <span aria-hidden="true">↗</span>}
           </Link>
         ))}
+        {signedIn === false && (
+          <>
+            <Link href="/sign-in/" onClick={() => setOpen(false)}>
+              Sign In
+            </Link>
+            <Link href="/sign-up/" onClick={() => setOpen(false)}>
+              Sign Up
+            </Link>
+          </>
+        )}
+        {signedIn === true && (
+          <Link href="/my-account/" prefetch={false} onClick={() => setOpen(false)}>
+            My Account
+          </Link>
+        )}
       </div>
     </div>
   );

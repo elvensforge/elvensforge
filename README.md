@@ -4,7 +4,16 @@ This checkout implements the homepage specification on **UAT only**, targeting `
 
 ## Development
 
-Use Node.js 24. Run `npm ci`, copy `.env.example` to `.env.local`, and run `npm run dev`. Validate with `npm run lint` and `npm run build`. The existing Next.js static export is generated in `out/`; routing and dependencies are preserved.
+Use Node.js 24. Run `npm ci`, copy `.env.example` to `.env.local`, and run `npm run dev`. Validate with `npm run lint`, `npx tsc --noEmit`, and `npm run build`. The default build runs on a Next.js server. The existing IONOS GitHub Actions job selects static export via `GITHUB_ACTIONS=true` and `DEPLOYMENT_FOLDER=./out`, yielding the public pages in `out/`.
+
+## Account setup for Vercel Preview
+
+1. Use a Clerk development instance and a Supabase project dedicated to UAT. Enable the desired sign-in methods in Clerk and activate the native Supabase integration from Clerk's Integrations page. Register that Clerk instance as a third-party provider in Supabase. See [Supabase's Clerk setup guide](https://supabase.com/docs/guides/auth/third-party/clerk).
+2. Apply `supabase/migrations/20261121000000_create_profiles.sql` to the UAT database. The app uses Clerk session JWTs and the Supabase publishable key. RLS identifies the owner by the JWT subject and permits only reads and inserts of the owner's profile.
+3. Import the GitHub repository into Vercel with the Next.js preset, Node.js 24 and the repository root as the project root. Use the default Build Command and Output Directory. Set the values from `.env.example` for Preview and set `NEXT_PUBLIC_SITE_URL` to the UAT preview origin. Store `CLERK_SECRET_KEY` as a sensitive Preview variable. Apply the same values locally as appropriate.
+4. Open `/my-account/` in a private window and verify redirection to sign-in. Register, complete verification, and confirm that My Account shows the profile date. Sign out, sign back in, and verify that the date is unchanged. With a second test account, verify that only its own profile is visible via the Supabase Data API.
+
+A profile is initialized on the first visit to My Account, the default destination after registration and sign-in. Clerk handles identity management and sign-out through the account menu.
 
 ## Homepage and reusable components
 
@@ -35,7 +44,7 @@ Product demonstrations have a reserved noninteractive space until an original vi
 
 ## UAT indexing and deployment
 
-The existing IONOS orchestration selects the branch from the workflow's Git ref. Only UAT is to be pushed for this task. The build workflow supplies the known UAT URL and `NEXT_PUBLIC_DEPLOYMENT_ENV=uat` for that branch. Production refs use the original supplied site URL and do not receive the UAT flag.
+The existing IONOS orchestration selects the branch from the workflow's Git ref. The build workflow supplies the known UAT URL and `NEXT_PUBLIC_DEPLOYMENT_ENV=uat` for that branch. Production refs use the original supplied site URL and do not receive the UAT flag.
 
 UAT gets `noindex, nofollow` metadata and `robots.txt` with `Disallow: /`. A branch-conditional workflow step adds an `X-Robots-Tag` response-header directive to the exported `.htaccess` for Apache hosts with `mod_headers`. No production workflow is dispatched by this task. The restrictions are intended for indexing control, not access control.
 
