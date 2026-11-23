@@ -4,7 +4,13 @@ import { legalLinks, socialProfiles } from "@/lib/content";
 import MobileNavigation from "./mobile-navigation";
 import HomeLink from "./home-link";
 
-export function SiteHeader({ shopPage = false }: { shopPage?: boolean }) {
+export function SiteHeader({
+  shopPage = false,
+  accountPage = false,
+}: {
+  shopPage?: boolean;
+  accountPage?: boolean;
+}) {
   return (
     <header className="siteHeader">
       <nav className="navigation siteNavigation" aria-label="Main navigation">
@@ -18,7 +24,10 @@ export function SiteHeader({ shopPage = false }: { shopPage?: boolean }) {
           />
           <span>ELVENSFORGE</span>
         </HomeLink>
-        <MobileNavigation shopPage={shopPage} />
+        <MobileNavigation
+          shopPage={shopPage}
+          accountPage={accountPage}
+        />
       </nav>
     </header>
   );

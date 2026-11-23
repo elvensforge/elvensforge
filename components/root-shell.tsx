@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cal_Sans, Geist } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import { pageMetadata } from "@/lib/metadata";
 import { siteDescription, isUat } from "@/lib/content";
 const geist = Geist({
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     : {}),
 };
 
-export default function RootLayout({
+export default function RootShell({
   children,
 }: Readonly<{
   children: React.ReactNode;

@@ -806,6 +806,38 @@ article[id] {
   color: var(--muted);
   margin: 24px 0 0;
 }
+.accountPage {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 24px;
+  min-height: 65vh;
+  padding: clamp(32px, 7vw, 88px) 16px;
+}
+
+.accountPage > h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 6vw, 64px);
+}
+
+.accountPanel {
+  display: grid;
+  gap: 16px;
+  width: min(100%, 480px);
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.accountPanelHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
 .shopPage .shopCatalog {
   padding-top: 48px;
 }
